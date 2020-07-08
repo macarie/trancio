@@ -1,0 +1,63 @@
+{
+	"name": "trancio",
+	"version": "0.0.1",
+	"description": "Create an array of elements split into groups",
+	"license": "MIT",
+	"type": "module",
+	"exports": {
+		".": "./index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/macarie/trancio.git"
+	},
+	"bugs": {
+		"url": "https://github.com/macarie/trancio/issues"
+	},
+	"homepage": "https://github.com/macarie/trancio#readme",
+	"author": {
+		"name": "Raul Macarie",
+		"email": "raul@macarie.me",
+		"url": "https://macarie.me"
+	},
+	"engines": {
+		"node": ">=11"
+	},
+	"files": [
+		"index.js"
+	],
+	"scripts": {
+		"lint": "xo"
+	},
+	"devDependencies": {
+		"prettier": "^2.0.5",
+		"xo": "^0.32.1"
+	},
+	"xo": {
+		"prettier": true,
+		"rules": {
+			"unicorn/import-index": [
+				"off"
+			],
+			"import/extensions": [
+				"off"
+			],
+			"import/no-useless-path-segments": [
+				"off"
+			],
+			"unicorn/no-fn-reference-in-iterator": [
+				"off"
+			]
+		},
+		"ignores": [
+			"*.ts"
+		]
+	},
+	"prettier": {
+		"semi": false,
+		"bracketSpacing": true,
+		"useTabs": true,
+		"endOfLine": "lf",
+		"trailingComma": "es5"
+	}
+}
