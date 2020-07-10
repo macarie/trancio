@@ -4,5 +4,5 @@
 
 - [ ] Add tests 🧪
 - [ ] Add documentation 📓
-- [ ] Refactor using TypeScript 🧰
+- [x] Refactor using TypeScript 🧰
 - [ ] Publish 🧧
