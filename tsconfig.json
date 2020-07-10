@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ES2020",
+		"lib": ["ESNext"],
+		"strict": true,
+		"noImplicitAny": true,
+		"declaration": true,
+		"emitDeclarationOnly": true
+	},
+	"include": ["index.ts"]
+}

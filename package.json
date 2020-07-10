@@ -4,8 +4,10 @@
 	"description": "Create an array of elements split into groups",
 	"license": "MIT",
 	"type": "module",
+	"main": "./index.js",
 	"exports": {
-		".": "./index.js"
+		".": "./index.js",
+		"./typescript": "./index.ts"
 	},
 	"repository": {
 		"type": "git",
@@ -24,12 +26,17 @@
 		"node": ">=11"
 	},
 	"files": [
-		"index.js"
+		"index.js",
+		"index.ts",
+		"index.d.ts"
 	],
 	"scripts": {
+		"compile": "tsc && esbuild --target=esnext --minify --outfile=index.js index.ts",
 		"lint": "xo"
 	},
 	"devDependencies": {
+		"esbuild": "^0.5.26",
+		"typescript": "^3.9.6",
 		"xo": "^0.32.1"
 	},
 	"xo": {
@@ -47,10 +54,7 @@
 			"unicorn/no-fn-reference-in-iterator": [
 				"off"
 			]
-		},
-		"ignores": [
-			"*.ts"
-		]
+		}
 	},
 	"prettier": {
 		"semi": false,

@@ -4,3 +4,6 @@ package-lock.json
 yarn-error.log
 .nyc_output
 coverage
+
+index.js
+index.d.ts
