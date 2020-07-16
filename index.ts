@@ -1,6 +1,6 @@
 export interface TrancioIterable<T> extends IterableIterator<T[]> {
 	[Symbol.iterator]: () => IterableIterator<T[]>
-	(): T[]
+	(): T[] | undefined
 }
 
 /**
@@ -24,15 +24,13 @@ export interface TrancioIterable<T> extends IterableIterator<T[]> {
  */
 export const trancio = <T>(array: T[], size: number): TrancioIterable<T> => {
 	const tranci = Math.ceil(array.length / size)
-	const generatorObject: IteratorResult<T[], undefined> = {
-		value: undefined,
-		done: false as boolean,
-	}
+
+	const generatorObject: IteratorResult<T[], void> = Object.create(null)
 
 	let trancioNumber = 0
 
 	const generator: TrancioIterable<T> = () => {
-		let chunk: T[]
+		let chunk: T[] | undefined
 
 		if (trancioNumber < tranci) {
 			chunk = array.slice(trancioNumber * size, trancioNumber * size + size)
@@ -45,19 +43,15 @@ export const trancio = <T>(array: T[], size: number): TrancioIterable<T> => {
 
 	generator.next = () => {
 		generatorObject.value = generator()
-		generatorObject.done = !(trancioNumber <= tranci)
+		generatorObject.done = trancioNumber > tranci
 
 		return generatorObject
 	}
 
-	generator[Symbol.iterator] = (): IterableIterator<T[]> => {
-		const iterator: IterableIterator<T[]> = {
-			next: generator.next,
-			[Symbol.iterator]: generator[Symbol.iterator],
-		}
-
-		return iterator
-	}
+	generator[Symbol.iterator] = (): IterableIterator<T[]> => ({
+		next: generator.next,
+		[Symbol.iterator]: generator[Symbol.iterator],
+	})
 
 	return generator
 }
