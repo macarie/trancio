@@ -1,3 +1,8 @@
+export interface TrancioIterable<T> extends IterableIterator<T[]> {
+	[Symbol.iterator]: () => IterableIterator<T[]>
+	(): T[]
+}
+
 /**
  * Lazily splits into groups the length of `size` an array. If `array` can't be split evenly, the final chunk will be the remaining elements.
  *
@@ -17,23 +22,42 @@
  * // => [ [0, 1, 2], [3, 4] ]
  * ```
  */
-export function* trancio<T>(
-	array: T[],
-	size: number
-): Generator<T[], void, void> {
-	const { length: arrayLength } = array
-
-	if (size <= 0 || arrayLength === 0) {
-		yield []
-
-		return
+export const trancio = <T>(array: T[], size: number): TrancioIterable<T> => {
+	const tranci = Math.ceil(array.length / size)
+	const generatorObject: IteratorResult<T[], undefined> = {
+		value: undefined,
+		done: false as boolean,
 	}
 
-	const numberOfChunks = Math.ceil(arrayLength / size)
+	let trancioNumber = 0
 
-	for (let index = 0; index < numberOfChunks; index++) {
-		const sliceFrom = index * size
+	const generator: TrancioIterable<T> = () => {
+		let chunk: T[]
 
-		yield array.slice(sliceFrom, sliceFrom + size)
+		if (trancioNumber < tranci) {
+			chunk = array.slice(trancioNumber * size, trancioNumber * size + size)
+		}
+
+		trancioNumber += 1
+
+		return chunk
 	}
+
+	generator.next = () => {
+		generatorObject.value = generator()
+		generatorObject.done = !(trancioNumber <= tranci)
+
+		return generatorObject
+	}
+
+	generator[Symbol.iterator] = (): IterableIterator<T[]> => {
+		const iterator: IterableIterator<T[]> = {
+			next: generator.next,
+			[Symbol.iterator]: generator[Symbol.iterator],
+		}
+
+		return iterator
+	}
+
+	return generator
 }
