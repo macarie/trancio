@@ -31,11 +31,19 @@
 		"index.d.ts"
 	],
 	"scripts": {
-		"compile": "tsc && esbuild --target=esnext --minify --outfile=index.js index.ts",
-		"lint": "xo"
+		"ava": "ava --verbose",
+		"compile:declaration": "tsc --emitdeclarationonly",
+		"compile:library": "esbuild --target=esnext --minify --outfile=index.js index.ts",
+		"compile": "run-p -s compile:*",
+		"lint:tsc": "tsc --noemit",
+		"lint:xo": "xo",
+		"lint": "run-p -s lint:*",
+		"test": "run-s -s compile ava"
 	},
 	"devDependencies": {
-		"esbuild": "^0.5.26",
+		"ava": "^3.10.1",
+		"esbuild": "^0.6.3",
+		"npm-run-all": "^4.1.5",
 		"typescript": "^3.9.6",
 		"xo": "^0.32.1"
 	},
