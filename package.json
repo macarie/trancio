@@ -7,7 +7,7 @@
 	"main": "./index.js",
 	"exports": {
 		".": "./index.js",
-		"./typescript": "./index.ts"
+		"./ts": "./index.ts"
 	},
 	"repository": {
 		"type": "git",
