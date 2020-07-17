@@ -1,4 +1,4 @@
-# 🍕 [trancio](https://github.com/macarie/trancio)
+# 🍕 [trancio](https://github.com/macarie/trancio) [![Release Version](https://img.shields.io/npm/v/trancio.svg?label=&color=0080FF)](https://www.npmjs.com/package/trancio)
 
 > Trancio lazily splits an array into chunks, providing both a functional and an iterable interface
 
@@ -103,6 +103,6 @@ for (const fetta of trancio(array, 3)) {
 
 ## FAQ
 
-## What does _trancio_ mean?
+### What does _trancio_ mean?
 
 Pronounced [`/ˈtrantʃo/`](https://github.com/macarie/trancio/blob/master/media/pronunciation.m4a?raw=true), trancio is an Italian word that means "slice" or "piece". Usually, the term is used for food, e.g. _"un trancio di pizza"_, which means _"a slice of pizza"_, hence the pizza emoji at the top.
