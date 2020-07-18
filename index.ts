@@ -10,6 +10,7 @@ export interface TrancioIterable<T> extends IterableIterator<T[]> {
  * @param size The length of each chunk.
  *
  * @yields A chunk of `array` containing `size` elements. With each iteration the slice range increseas by `size`, starting with `[0, size)`, it continues to `[size, size + size)`, and so on.
+ * @returns A function that returns a chunk as described in `@yields`, when there are no more chunks it returns `undefined`.
  *
  * @example
  * ```ts
