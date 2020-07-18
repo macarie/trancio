@@ -50,3 +50,19 @@ test('next', (t) => {
 	t.is(fetta.value, undefined)
 	t.is(fetta.done, true)
 })
+
+test('zero size', (t) => {
+	const trancia = trancio(numbers.origin, 0)
+
+	for (let index = 0; index < 100; index++) {
+		t.deepEqual(trancia(), [])
+	}
+})
+
+test('negative size', (t) => {
+	const trancia = trancio(numbers.origin, -5)
+
+	for (let index = 0; index < 100; index++) {
+		t.deepEqual(trancia(), [])
+	}
+})
