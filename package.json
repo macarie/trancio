@@ -1,7 +1,7 @@
 {
 	"name": "trancio",
 	"version": "0.0.1",
-	"description": "Create an array of elements split into groups",
+	"description": "Create an array of elements split into chunks",
 	"license": "MIT",
 	"type": "module",
 	"main": "./index.js",
@@ -30,6 +30,21 @@
 		"index.js",
 		"index.ts",
 		"index.d.ts"
+	],
+	"keywords": [
+		"array",
+		"chunk",
+		"helper",
+		"typescript",
+		"declaration",
+		"iterator",
+		"iterable",
+		"generator",
+		"functional",
+		"browser",
+		"node",
+		"module",
+		"esm"
 	],
 	"scripts": {
 		"ava": "c8 ava --verbose",
