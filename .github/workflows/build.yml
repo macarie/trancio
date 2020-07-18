@@ -5,6 +5,8 @@ on:
     branches: [next]
   pull_request:
     branches: [next]
+  workflow_dispatch:
+    branches: [next]
 
 jobs:
   test:
