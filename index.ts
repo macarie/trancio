@@ -23,7 +23,8 @@ export interface TrancioIterable<T> extends IterableIterator<T[]> {
  * ```
  */
 export const trancio = <T>(array: T[], size: number): TrancioIterable<T> => {
-	const tranci = Math.ceil(array.length / size)
+	const safeSize = size < 0 ? 0 : size
+	const tranci = Math.ceil(array.length / safeSize)
 
 	const generatorObject: IteratorResult<T[], void> = Object.create(null)
 
@@ -33,7 +34,10 @@ export const trancio = <T>(array: T[], size: number): TrancioIterable<T> => {
 		let chunk: T[] | undefined
 
 		if (trancioNumber < tranci) {
-			chunk = array.slice(trancioNumber * size, trancioNumber * size + size)
+			chunk = array.slice(
+				trancioNumber * safeSize,
+				trancioNumber * safeSize + safeSize
+			)
 		}
 
 		trancioNumber += 1
