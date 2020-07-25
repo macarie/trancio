@@ -2,7 +2,7 @@
 
 > Trancio lazily splits an array into chunks, providing both a functional and an iterable interface
 
-![Build](https://github.com/macarie/trancio/workflows/test/badge.svg) ![Coverage Status](https://img.shields.io/codecov/c/github/macarie/trancio) [![License](https://img.shields.io/npm/l/trancio?color=42cdad)](https://github.com/macarie/compatto/blob/master/license)
+![Build](https://github.com/macarie/trancio/workflows/test/badge.svg) ![Coverage Status](https://img.shields.io/codecov/c/github/macarie/trancio) [![License](https://img.shields.io/npm/l/trancio?color=42cdad)](https://github.com/macarie/trancio/blob/next/license)
 
 ## Install
 
